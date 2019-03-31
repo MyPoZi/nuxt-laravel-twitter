@@ -37,6 +37,20 @@ module.exports = {
       }
     }
   },
+  modules: [
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios'
+  ],
+  /*
+   ** Axios module configuration
+   */
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    baseURL: '/'
+  },
+  proxy: {
+    '/api': "http://localhost"
+  },
   srcDir: './client',
   watchers: {
     webpack: {
