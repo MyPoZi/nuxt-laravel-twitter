@@ -1,12 +1,3 @@
-// export const state = () => ({
-//   sidebar: false
-// })
-//
-// export const mutations = {
-//   toggleSidebar (state) {
-//     state.sidebar = !state.sidebar
-//   }
-// }
 const inBrowser = typeof window !== 'undefined'
 
 export const state = () => {
