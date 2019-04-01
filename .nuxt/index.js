@@ -11,8 +11,10 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
+import nuxt_plugin_cookieuniversalnuxt_6c99a4ee from 'nuxt_plugin_cookieuniversalnuxt_6c99a4ee' // Source: ./cookie-universal-nuxt.js (mode: 'all')
 import nuxt_plugin_axios_7e2b6fe1 from 'nuxt_plugin_axios_7e2b6fe1' // Source: ./axios.js (mode: 'all')
 import nuxt_plugin_vuetify_d6afc2c2 from 'nuxt_plugin_vuetify_d6afc2c2' // Source: ../client/plugins/vuetify.js (mode: 'all')
+import nuxt_plugin_persistedstate_519eff42 from 'nuxt_plugin_persistedstate_519eff42' // Source: ../client/plugins/persistedstate.js (mode: 'client')
 
 // Component: <NoSsr>
 Vue.component(NoSsr.name, NoSsr)
@@ -152,12 +154,20 @@ async function createApp(ssrContext) {
 
   // Plugin execution
 
+  if (typeof nuxt_plugin_cookieuniversalnuxt_6c99a4ee === 'function') {
+    await nuxt_plugin_cookieuniversalnuxt_6c99a4ee(app.context, inject)
+  }
+
   if (typeof nuxt_plugin_axios_7e2b6fe1 === 'function') {
     await nuxt_plugin_axios_7e2b6fe1(app.context, inject)
   }
 
   if (typeof nuxt_plugin_vuetify_d6afc2c2 === 'function') {
     await nuxt_plugin_vuetify_d6afc2c2(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_persistedstate_519eff42 === 'function') {
+    await nuxt_plugin_persistedstate_519eff42(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

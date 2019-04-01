@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 
 const _78e4a4e5 = () => interopDefault(import('../client/pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
+const _73970a1e = () => interopDefault(import('../client/pages/oauth/twitter/callback.vue' /* webpackChunkName: "pages/oauth/twitter/callback" */))
+const _2da43e35 = () => interopDefault(import('../client/pages/oauth/twitter/redirect.vue' /* webpackChunkName: "pages/oauth/twitter/redirect" */))
 const _20c21f9d = () => interopDefault(import('../client/pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -83,6 +85,14 @@ export function createRouter() {
       path: "/inspire",
       component: _78e4a4e5,
       name: "inspire"
+    }, {
+      path: "/oauth/twitter/callback",
+      component: _73970a1e,
+      name: "oauth-twitter-callback"
+    }, {
+      path: "/oauth/twitter/redirect",
+      component: _2da43e35,
+      name: "oauth-twitter-redirect"
     }, {
       path: "/",
       component: _20c21f9d,

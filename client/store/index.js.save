@@ -1,4 +1,4 @@
-// export const state = () => ({
+port const state = () => ({
 //   sidebar: false
 // })
 //
@@ -31,7 +31,7 @@ export const mutations = {
     // Store token in cookies
     if (inBrowser) {
       if (token) {
-        this.$cookies.set('token', token)
+        this.$cookies.set('token', token, { expires: 30 })
       } else {
         this.$cookies.remove('token')
       }
@@ -41,7 +41,7 @@ export const mutations = {
 export const actions = {
   // ユーザーの訪問時（SSR）で呼ばれるメソッド
   nuxtServerInit ({ dispatch, state, commit }, { error }) {
-    const token = this.$cookies.token
+    const token = this.$cookies.cookies.token
 
     if (!token) {
       return Promise.resolve()

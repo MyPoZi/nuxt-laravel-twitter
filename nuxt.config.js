@@ -14,7 +14,10 @@ module.exports = {
       {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'}
     ]
   },
-  plugins: ['~/plugins/vuetify.js'],
+  plugins: [
+    '~/plugins/vuetify.js',
+    { src: '~plugins/persistedstate.js', ssr: false },
+  ],
   css: ['~/assets/style/app.styl'],
   /*
   ** Customize the progress bar color
@@ -39,14 +42,16 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/proxy',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'cookie-universal-nuxt',
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: '/'
+    baseURL: '/api/',
+    credentials: true,
   },
   proxy: {
     '/api': "http://localhost"
